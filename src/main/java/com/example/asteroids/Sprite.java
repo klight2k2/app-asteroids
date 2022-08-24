@@ -22,6 +22,7 @@ public class Sprite {
         setImage(imageFileName);
     }
     public void setImage(String imageFileName){
+
         this.image=new Image(imageFileName);
         this.boundary.setSize(this.image.getWidth(),this.image.getHeight());
     }
