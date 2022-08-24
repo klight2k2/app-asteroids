@@ -21,7 +21,27 @@ public class Sprite {
         this();
         setImage(imageFileName);
     }
+
+    public void wrap(double screenWitdth,double screenHeight){
+        double halfWidth=this.image.getWidth()/2;
+        double halfHeight=this.image.getHeight()/2;
+        if(this.position.x+halfWidth<0){
+                this.position.x=screenWitdth+halfWidth;
+        }
+        if (this.position.x>screenWitdth){
+            this.position.x=-halfWidth;
+        }
+           if(this.position.y+halfHeight<0){
+                this.position.y=screenHeight+halfHeight;
+        }
+        if (this.position.y>screenHeight){
+            this.position.y=-halfHeight;
+        }
+
+    }
+
     public void setImage(String imageFileName){
+
         this.image=new Image(imageFileName);
         this.boundary.setSize(this.image.getWidth(),this.image.getHeight());
     }
@@ -38,6 +58,7 @@ public class Sprite {
 
     public  void update(double deltaTime){
         this.position.add(this.velocity.x*deltaTime, this.velocity.y*deltaTime);
+        this.wrap(800,600);
     }
     public  void render(GraphicsContext context){
         context.save();

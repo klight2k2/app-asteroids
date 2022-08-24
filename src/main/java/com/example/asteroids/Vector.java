@@ -35,9 +35,12 @@ public class Vector {
         double currentLength=this.getLength();
         // guard against division by 0 later
         if(currentLength==0)
-            return;
+        {
+            this.set(L,0);
+        }else{
         this.multiple(1/currentLength);
         this.multiple(L);
+        }
     }
 
     public double getAngle(){
